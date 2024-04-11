@@ -1,7 +1,11 @@
 class CouponModel {
-  int count;
-  int discount;
-  String code;
+  int? count;
+  int? discount;
+  String? code;
+
+  CouponModel.init() {
+    print('object');
+  }
 
   CouponModel({
     required this.count,

@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'package:ushop/helper/fb_store_helper.dart';
 import 'package:ushop/modal/product_model.dart';
 
+import '../../controller/theme_controller.dart';
 import 'detilepage.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,8 +13,38 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Provider.of<ThemeController>(context).isDark;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+        appBar: AppBar(
+          title: Text('HomePage'),
+          centerTitle: true,
+          actions: [
+            Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: isDark ? Colors.white : Colors.black),
+              ),
+              child: IconButton(
+                onPressed: () {
+                  Provider.of<ThemeController>(context, listen: false)
+                      .changeTheme();
+                },
+                icon: isDark
+                    ? Icon(
+                        Icons.light_mode_outlined,
+                        size: 20,
+                      )
+                    : Icon(
+                        Icons.light_mode,
+                        size: 20,
+                      ),
+              ),
+            ),
+          ],
+        ),
         body: StreamBuilder(
             stream: FbStoreHelper.fbStoreHelper.fetchAllProducts(),
             builder: (context, snapshot) {
@@ -45,19 +77,22 @@ class HomePage extends StatelessWidget {
                         },
                         child: Container(
                           padding: EdgeInsets.all(8),
+                          margin: EdgeInsets.all(10),
                           height: 200,
                           decoration: BoxDecoration(
-                            color: Color(0xfff9f9f9),
-                            border: Border.all(
-                              color: Colors.grey.shade200,
-                              width: 2,
-                            ),
+                            color: isDark ? Colors.black : Color(0xfff9f9f9),
+                            border: isDark
+                                ? Border.all(width: 0)
+                                : Border.all(
+                                    color: Colors.grey.shade200,
+                                    width: 2,
+                                  ),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: Row(mainAxisSize: MainAxisSize.min, children: [
                             Container(
                               height: 170,
-                              width: 130,
+                              width: 128,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),
                                   color: Color(0xffF8F8F8),
@@ -79,7 +114,6 @@ class HomePage extends StatelessWidget {
                                     product.title,
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black,
                                       fontSize: 16,
                                     ),
                                     overflow: TextOverflow.ellipsis,

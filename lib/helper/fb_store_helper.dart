@@ -42,9 +42,21 @@ class FbStoreHelper {
     return firestore.collection('couponcode').snapshots();
   }
 
+  Future<Map<String, dynamic>?> fetchCoupo(String code) async {
+    DocumentSnapshot<Map<String, dynamic>> couponSnapshot =
+        await firestore.collection('couponcode').doc(code).get();
+    return couponSnapshot.data();
+  }
+
   decrementCoins(String code) async {
     await firestore.collection('couponcode').doc(code).update({
       'count': FieldValue.increment(-1),
+    });
+  }
+
+  decrementProduct(int id) async {
+    await firestore.collection('products').doc(id.toString()).update({
+      'rating.count': FieldValue.increment(-1),
     });
   }
 
