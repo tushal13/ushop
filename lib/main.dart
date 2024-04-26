@@ -1,10 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ushop/views/screen/homepage.dart';
+import 'package:ushop/views/screen/HomePage.dart';
 
-import 'controller/theme_controller.dart';
-import 'controller/ushopcontroller.dart';
+import 'Controller/ThemeController.dart';
+import 'controller/UshopController.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {

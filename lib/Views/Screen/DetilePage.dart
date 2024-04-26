@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:ushop/modal/product_model.dart';
-import 'package:ushop/views/screen/buypage.dart';
+import 'package:ushop/views/screen/BuyPage.dart';
+
+import '../../Model/ProductModel.dart';
 
 class DetailPage extends StatelessWidget {
   final ProductModel product;

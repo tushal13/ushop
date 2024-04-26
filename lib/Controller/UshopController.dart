@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ushop/modal/coupon_modal.dart';
+
+import '../Model/CouponModal.dart';
 
 class UshopController extends ChangeNotifier {
   bool isAplied = false;

@@ -2,11 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import 'package:ushop/helper/fb_store_helper.dart';
-import 'package:ushop/modal/product_model.dart';
+import 'package:ushop/helper/FbStoreHelper.dart';
 
-import '../../controller/theme_controller.dart';
-import 'detilepage.dart';
+import '../../Controller/ThemeController.dart';
+import '../../Model/ProductModel.dart';
+import 'DetilePage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
