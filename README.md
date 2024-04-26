@@ -1,7 +1,8 @@
-
 <p align="center">
-  <img src="" alt="Axiocash Logo" />
+  <img src="https://github.com/tushal13/ushop/assets/113960162/bc4e8f8b-9eaa-47ad-8da1-03e71aa9e69c" alt="Image" width="150" />
+
 </p>
+
 
 
 <h1 align="center">Ushop 🛍️
